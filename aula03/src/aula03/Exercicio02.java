@@ -15,7 +15,7 @@ public class Exercicio02 {
 		sc.close();
 		for (contA = 1; contA <= linhas; contA++) {
 
-			for (contB = 10; contB >= contA; contB--)
+			for (contB = linhas; contB >= contA; contB--)
 				System.out.print("*");
 				System.out.print("\n");// quebra linha
 		}
