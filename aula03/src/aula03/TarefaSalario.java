@@ -2,7 +2,7 @@ package aula03;
 
 import java.util.Scanner;
 
-public class Testes {
+public class TarefaSalario {
 
 	public static void main(String[] args) {
 
