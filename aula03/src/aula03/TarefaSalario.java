@@ -81,9 +81,9 @@ public class TarefaSalario {
 		System.out.println("**********************************************");
 		System.out.println("        DEMONSTRATIVO DE PAGAMENTO        ");
 		System.out.println("");
-		System.out.printf("Salário anual bruto: R$ %.2f %n", salarioBrutoAnual);
-		System.out.printf("Total anual de INSS descontado: R$ %.2f %n", descAnualINSS);
-		System.out.printf("Salário líquido anual: R$ %.2f %n", liquidoAnual);
+		System.out.printf("Salário anual bruto: R$%.2f%n", salarioBrutoAnual);
+		System.out.printf("Total anual de INSS descontado: R$%.2f%n", descAnualINSS);
+		System.out.printf("Salário líquido anual: R$%.2f%n", liquidoAnual);
 		System.out.println("*********************************************");
 	}
 
