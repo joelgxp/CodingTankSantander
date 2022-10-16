@@ -10,7 +10,6 @@ public class Exercicio02 {
 //    	    aumentarSalario();
 //        	calcularINSS();
 //    	    calcularTercoFerias();
-    	    calcularSalarioLiquidoAnual();
 	      }
 	    
 	    
