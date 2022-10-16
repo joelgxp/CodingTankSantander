@@ -4,7 +4,11 @@ import java.util.Scanner;
 
 public class Teste02 {
 	
+	public static Scanner sc = new Scanner(System.in);
+	
 	public static void main(String[] args) {
+		
+		
 		mostrar();
 		//salarioBrutoAnual();
 		//calcDescINSS();
@@ -13,18 +17,18 @@ public class Teste02 {
 	
 	public static float salarioMensal() {
 		
-		Scanner sc = new Scanner(System.in);
+		//Scanner sc = new Scanner(System.in);
 
 		System.out.print("Informe o salário mensal: ");
 		float salarioMes = sc.nextFloat();
 
-		sc.close();
+		//sc.close();
 
 		return salarioMes;
 	}
 	
-	public static float calcDescINSS() {
-		float calc = salarioMensal();
+	public static float calcDescINSS(float salarioMensal) {
+		float calc = salarioMensal;
 		float descINSS;
 
 		if (calc >= 0 && calc <= 1212.00) { // 0 até 1212.00 -> 7,5%
@@ -45,16 +49,16 @@ public class Teste02 {
 		return descINSS;
 	}
 	
-	public static float salarioBrutoAnual() {
-		float salarioMes = salarioMensal();
+	public static float salarioBrutoAnual(float salarioMes) {
+		
 		float salarioTotal = (salarioMes * 13) + (salarioMes / 3);
 		return salarioTotal;
 		
 	}
 	
-	public static float inssAnual() {
-		float inssMes = calcDescINSS();
-		float inssTotal = (inssMes * 13) + (inssMes / 3);
+	public static float inssAnual(float calcDescINSS) {
+		
+		float inssTotal = (calcDescINSS * 13) + (calcDescINSS / 3);
 		return inssTotal;
 		
 	}

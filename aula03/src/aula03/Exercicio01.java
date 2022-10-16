@@ -2,13 +2,14 @@ package aula03;
 
 import java.util.Scanner;
 
-
 public class Exercicio01 {
-	
+
+	static float salarioMes;
+
 	public static void main(String[] args) {
-			
+
 		mostrar();
-		
+
 	}
 
 	public static float salarioMensal() {
@@ -16,7 +17,7 @@ public class Exercicio01 {
 		Scanner sc = new Scanner(System.in);
 
 		System.out.print("Informe o salário mensal: ");
-		float salarioMes = sc.nextFloat();
+		salarioMes = sc.nextFloat();
 
 		sc.close();
 
@@ -25,29 +26,43 @@ public class Exercicio01 {
 
 	public static float calcDescINSS() {
 
-		float calc = salarioMensal();
-		float descINSS;
+		float calc = salarioMes;
+		float descINSS = 0;
+		float calc1 = 0;
+		float calc2 = 0;
+		float calc3 = 0;
+		float calc4 = 0;
 
-		if (calc >= 0 && calc <= 1212.00) { // 0 até 1212.00 -> 7,5%
-			descINSS = calc * 0.075f;
-			
-		} else if (calc >= 1212.01 && calc <= 2427.35) { // 1212.01 até 2427,35 -> 9%
-			descINSS = calc * 0.09f;
-			
-		} else if (calc >= 2427.36 && calc <= 3641.03) { // 2427,36 até 3641,03 -> 12%
-			descINSS = calc * 0.12f;
-			
-		} else if (calc >= 3641.04 && calc <= 7087.22) { // 3641,04 até 7087,22 -> 14%
-			descINSS = calc * 0.14f;
-			
-		} else { // acima de 7087,22 deve ser descontado o teto de 900 reais
+		if (calc <= 1212.00) {
+			calc1 = calc * 0.075f;
+			descINSS = calc1;
+
+		} else if (calc >= 1212.01 && calc <= 2427.35) {
+			calc1 = 1212.00f * 0.075f;
+			calc2 = (calc - 1212.01f) * 0.09f;
+			descINSS = calc1 + calc2;
+
+		} else if (calc >= 2427.36 && calc <= 3641.03) {
+			calc1 = 1212.00f * 0.075f;
+			calc2 = 1215.34f * 0.09f;
+			calc3 = (calc - 2427.36f) * 0.12f;
+			descINSS = calc1 + calc2 + calc3;
+
+		} else if (calc >= 3641.04 && calc <= 7087.22) {
+			calc1 = 1212.00f * 0.075f;
+			calc2 = 1215.34f * 0.09f;
+			calc3 = 1213.68f * 0.12f;
+			calc4 = (calc - 3641.04f) * 0.14f;
+			descINSS = calc1 + calc2 + calc3 + calc4;
+
+		} else {
 			descINSS = 900f;
 		}
-		return descINSS; // descINSS guardou a variavel calculada
+		return descINSS;
 	}
 
 	public static float salarioBrutoAnual() {
-		float salarioMes = salarioMensal();
+		salarioMes = salarioMensal();
 		float salarioTotal = (salarioMes * 13) + (salarioMes / 3);
 		return salarioTotal;
 	}
@@ -57,20 +72,19 @@ public class Exercicio01 {
 		float inssTotal = (inssMes * 13) + (inssMes / 3);
 		return inssTotal;
 	}
-	
-//	O resultado final apresentado ao funcionário deve ter o 
-//	salário anual bruto, 
-//	total anual de inss descontado e o 
-//	salário anual líquido final.
 
 	public static void mostrar() {
 		float salarioBrutoAnual = salarioBrutoAnual();
 		float descAnualINSS = inssAnual();
 		float liquidoAnual = (salarioBrutoAnual - descAnualINSS);
-		
-		System.out.println("Salário anual bruto:  " + salarioBrutoAnual);
-		System.out.println("Total anual de INSS descontado:  " + descAnualINSS);
-		System.out.println("Salário líquido anual:  " + liquidoAnual);
+
+		System.out.println("**********************************************");
+		System.out.println("        DEMONSTRATIVO DE PAGAMENTO        ");
+		System.out.println("");
+		System.out.printf("Salário anual bruto: R$ %.2f %n", salarioBrutoAnual);
+		System.out.printf("Total anual de INSS descontado: R$ %.2f %n", descAnualINSS);
+		System.out.printf("Salário líquido anual: R$ %.2f %n", liquidoAnual);
+		System.out.println("*********************************************");
 	}
 
 }
