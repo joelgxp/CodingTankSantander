@@ -2,17 +2,17 @@ package aula03;
 
 import java.util.Scanner;
 
-
-public class Exercicio01 {
+public class Teste02 {
 	
 	public static void main(String[] args) {
-			
 		mostrar();
-		
+		//salarioBrutoAnual();
+		//calcDescINSS();
+
 	}
-
+	
 	public static float salarioMensal() {
-
+		
 		Scanner sc = new Scanner(System.in);
 
 		System.out.print("Informe o salário mensal: ");
@@ -22,9 +22,8 @@ public class Exercicio01 {
 
 		return salarioMes;
 	}
-
+	
 	public static float calcDescINSS() {
-
 		float calc = salarioMensal();
 		float descINSS;
 
@@ -43,34 +42,37 @@ public class Exercicio01 {
 		} else { // acima de 7087,22 deve ser descontado o teto de 900 reais
 			descINSS = 900f;
 		}
-		return descINSS; // descINSS guardou a variavel calculada
+		return descINSS;
 	}
-
+	
 	public static float salarioBrutoAnual() {
 		float salarioMes = salarioMensal();
 		float salarioTotal = (salarioMes * 13) + (salarioMes / 3);
 		return salarioTotal;
+		
 	}
-
+	
 	public static float inssAnual() {
 		float inssMes = calcDescINSS();
 		float inssTotal = (inssMes * 13) + (inssMes / 3);
 		return inssTotal;
+		
 	}
 	
 //	O resultado final apresentado ao funcionário deve ter o 
 //	salário anual bruto, 
 //	total anual de inss descontado e o 
 //	salário anual líquido final.
-
+	
 	public static void mostrar() {
 		float salarioBrutoAnual = salarioBrutoAnual();
 		float descAnualINSS = inssAnual();
-		float liquidoAnual = (salarioBrutoAnual - descAnualINSS);
+		float liquidoAnual = salarioBrutoAnual - descAnualINSS;
 		
-		System.out.println("Salário anual bruto:  " + salarioBrutoAnual);
-		System.out.println("Total anual de INSS descontado:  " + descAnualINSS);
-		System.out.println("Salário líquido anual:  " + liquidoAnual);
+		System.out.printf("Salário anual bruto:  ", salarioBrutoAnual);
+		System.out.printf("Total anual de INSS descontado:  ", descAnualINSS);
+		System.out.printf("Salário líquido anual:  ", liquidoAnual);
+		
 	}
 
 }
